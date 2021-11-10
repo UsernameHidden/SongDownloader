@@ -3,6 +3,7 @@ import pycurl
 from io import BytesIO 
 import requests
 from pytube import YouTube
+import os
 
 url =  input("[-] Spotify URL: ")
 
@@ -34,6 +35,9 @@ try:
 except:
     pass
 print(f"[+] Name of the artist: {artist_name}\n")
+
+os.mkdir(artist_name)
+os.chdir("./"+artist_name)
 
 #*****************************************************************************************#
 print("[+] Getting the Youtube links of the songs")
