@@ -1,11 +1,13 @@
 
 import pycurl
-from io import BytesIO 
+from io import BytesIO
 import requests
 from pytube import YouTube
 import os
 
-url =  input("[-] Spotify URL: ")
+print(f"\n[+] This tool can only download the first 30 songs of the playlist.")
+
+url =  input("\n[-] Spotify URL: ")
 
 b_obj = BytesIO() 
 crl = pycurl.Curl() 
@@ -20,7 +22,7 @@ body = get_body.decode('utf8')
 # number of songs in the playlist
 cut_number_of_songs_in_playlist = body[body.index('''<meta property="music:song_count" content="''') + len('''<meta property="music:song_count" content="'''):]
 number_of_songs = int(cut_number_of_songs_in_playlist[0]+ cut_number_of_songs_in_playlist[1])
-print(f"[+] Number of songs in the playlist: {number_of_songs}")
+print(f"\n[+] Number of songs in the playlist: {number_of_songs}")
 
 artist_name = ""
 artist_tag = '''This Is '''
@@ -38,7 +40,6 @@ print(f"[+] Name of the artist: {artist_name}\n")
 
 os.mkdir(artist_name)
 os.chdir("./"+artist_name)
-
 #*****************************************************************************************#
 print("[+] Getting the Youtube links of the songs")
 
